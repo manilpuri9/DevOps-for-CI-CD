@@ -1,0 +1,10 @@
+docker instelation
+machine:
+  if ubuntu 
+    apt-get install docker -y
+  if centos
+    yum install docker -y
+    
+service docker start
+docker pull mysql
+docker pull 
