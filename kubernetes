@@ -1,0 +1,160 @@
+scaling in cluster
+cluster
+virtual ip
+pacemaker -
+----tried for converting into cluster from loadbalancing
+horizantal scaling
+application health check
+vmware vsphare exsi
+
+    jevix
+
+roling updates
+
+image 
+container
+volumes
+kubernetes keywords
+    pods- isolation env with containers and env
+          can specify no of containers and volumes
+          pod has unique ip
+          smallest unit in kubernetes
+
+orchesters - 
+    docker swarm
+    nomad
+    docker compose
+    apache mesos
+    marathon on apache mesos
+
+kubernetes features
+    autoscaling
+    services
+    pods 
+    etcd -database
+        key value pair of master and pods
+    replica controller
+
+apiversion: v1
+kind: pod
+metadata:
+    name:nginx
+spec:
+    containers:
+    - name: nginx-server
+    image: nginxportsL
+    - containerPort: 80
+
+
+cli communication
+# commands kubectl get pods
+    by default there are some of kubernetes pods
+# kubectl get ns
+------------------namespace
+    default 
+    kube-public
+#kubetl -n default get pod
+--------------------getting this pod under specific namespace
+#kubectl -n mayank create -f pod
+
+#kubectl get nods
+------------------see the nodes we have
+#kubectl describe pod nginx | less
+-----------------see info about pod similar like docker inspect
+
+#docker ps | grep engine
+
+command init 6 means reboot
+
+---------------------------
+----------------------------
+
+POD replica controller
+    -- controls the replica of pods
+
+#kubectl -n get replica
+                                            kind:ReplicaController
+
+
+#kubectl -n mayank delete pods nginx
+#kubectl -n mayank create -f RC ###file of ReplicaController
+
+apiversion: v1kind: ReplicaController
+metadata:
+    name: 
+
+
+spec:
+
+container:
+
+
+
+
+
+=====================
+alias k created
+
+
+
+==========
+scaling using RC
+
+    k get RC
+    k scale --replicas=10 rc/my-nginx
+    k scale --replica=4 rc/my-nginx
+
+
+
+==============
+troublesooting
+kubectl
+
+labels 
+
+=================================================
+
+
+
+
+replica controller = scalling , new(rolling updates)
+replica set        = no scaling , no rolling updates, meta data handelling.
+                    
+                    scenario 1
+
+                 container 1 container 2 container 3
+                            pods
+                             rc       ----- rolling update not possible
+
+                    
+                    
+                    
+                    
+                    scenario 2
+                    
+                        container 1 container 2 container 3
+                            pods
+                             rc
+                             rs           --- rolling update change
+                          deployment
+                          servive
+
+
+
+
+================================================
+creating services:
+#k expose 
+===================
+services   doesnot has its own ip
+-----------------------------
+service has random port
+type=NodePort Port=80
+
+k get svc
+========================
+
+upgrading the base imagewe use rs instead of rc
+
+
+
