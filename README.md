@@ -6,7 +6,7 @@ The workhub web-app from my repo is converted inot docker image and it is upload
 The link to DockerHub repository is:
 *.    https://hub.docker.com/r/manilpuri9/workhub/  .*
 
-1. Run pull command in your server 
+1. Run pull command in your server: 
 *.    docker pull manilpuri9/workhub      .*
 
 2. Run the downloaded image as:
