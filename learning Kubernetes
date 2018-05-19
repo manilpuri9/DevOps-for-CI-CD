@@ -1,0 +1,7 @@
+# concepts and doubts
+We use Terraform to set up our AWS cloud resources (instances, network routes, DNS records, etc). 
+Our cloud and physical nodes run Ubuntu and are configured with Chef. 
+For faster spinup times, we pre-bake our cluster AMIs using Packer. 
+All our clusters use non-overlapping IP ranges and are interconnected over the public internet 
+with OpenVPN on user laptops, and strongSwan on physical nodes (which act as AWS Customer Gateways).
+
