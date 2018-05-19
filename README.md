@@ -1,7 +1,12 @@
 # CI/CD Automation Process 
 (Under Development)Includes Scripts for CI/CD using Jenkins, Docker and GitHub in AWS(Amazon Web Services) EC2 Cloud Infrastructure.
 
-# WorkHub Server Docker image
+First I am running the whole webapp manually in docker containers, perform some scaling operations using Kubernetes,
+After that I will Automate the whole process and make a CI/CD environment using Jenkins Pipeline with Docker, Kubernetes and Git.
+
+## 1. Manual steps for running WorkHub in Docker Containers 
+
+### WorkHub Server Docker image
 The workhub web-app from my repo is converted inot docker image and it is uploaded in DockerHub.
 The link to DockerHub repository is:
 *.    https://hub.docker.com/r/manilpuri9/workhub/  .*
@@ -14,3 +19,4 @@ The link to DockerHub repository is:
 *.    docker run -it -p 80:5000 workhub:v1 .*
 
 Upto here the server is running without the database
+
