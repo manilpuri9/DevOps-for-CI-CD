@@ -1,8 +1,8 @@
 # CI/CD Automation Process 
 (Under Development)Includes Scripts for CI/CD using Jenkins, Docker and GitHub in AWS(Amazon Web Services) EC2 Cloud Infrastructure.
 
-First I am running the whole webapp manually in docker containers, perform some scaling operations using Kubernetes,
-After that I will Automate the whole process and make a CI/CD environment using Jenkins Pipeline with Docker, Kubernetes and Git.
+First I am running the whole webapp manually in docker containers, perform some scaling operations using Kubernetes. 
+After that I will Automate the whole process and make a CI/CD environment for my webapp(WorkHub) using Jenkins-pipeline with Docker, Kubernetes and Git.
 
 ## 1. Manual steps for running WorkHub in Docker Containers 
 
