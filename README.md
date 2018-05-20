@@ -53,6 +53,15 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
 ###### At this point you must have a running webapp Workhub in your machine at port 80. Go to the browser and type localhost
 
 ## 2. Running my portfolio site in Docker Swarm & Kubernetes Cluster
-   Now for High Availability and Horizontal Scaling, we will be running my 
+###   1 Docker Swarm
+   Now for :
+   * High Availability,
+   * Horizontal Scaling,
+   * Decentralized design, 
+   * Load balancing,
+   * Rolling updates
+   We use docker swarm / container cluster.
+   
+   
 
 
