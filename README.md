@@ -6,7 +6,6 @@ After that I will Automate the whole process and make a CI/CD environment for my
 
 ## 1. Manual steps for running WorkHub in Docker Containers 
 
-### WorkHub Server Docker image
 The workhub web-app from my repo is converted inot docker image and it is uploaded in DockerHub.
 The link to DockerHub repository is:
    https://hub.docker.com/r/manilpuri9/workhub/ 
@@ -53,6 +52,7 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
 
 ###### At this point you must have a running webapp Workhub in your machine at port 80. Go to the browser and type localhost
 
-
+## 2. Running my portfolio site in Docker Swarm & Kubernetes Cluster
+   Now for High Availability and Horizontal Scaling, we will be running my 
 
 
