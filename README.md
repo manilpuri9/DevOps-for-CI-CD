@@ -12,18 +12,18 @@ The link to DockerHub repository is:
 *.    https://hub.docker.com/r/manilpuri9/workhub/  .*
 
 1. Run pull command in your server: 
-*.    docker pull manilpuri9/workhub      .*
+*    docker pull manilpuri9/workhub      *
 
 2. Run the downloaded image as:
 
-*.    docker run -it -p 80:5000 workhub:v1 .*
+*    docker run -it -p 80:5000 workhub:v1 *
 
 Upto here the server is running without the database.
 And here is the image of database:
 https://hub.docker.com/r/manilpuri9/database/
 1. Run pull command in your server:
 
-*. docker pull manilpuri9/database  .*
+* docker pull manilpuri9/database  *
 
 2. Run the downloaded image as:
 
