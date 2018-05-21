@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: portfolio
+spec:
+  containers:
+  - name: portfolio
+    image: manilpuri9/portfolio:v1
+    ports:
+    - containerPort: 80
