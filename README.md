@@ -118,7 +118,15 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    4. Create an alias for ease of typing "kubectl -n manil" all the time 
    *  alias kctl="kubectl -n NSmanil"
    
-   5. Create ReplicaController so that our service 
+   5. Create ReplicaController so that we can hirizontally scale at runtime and perform rolling updates:
+   *  kctl expose --type=NodePort --port=80 rc/portfolio
+   
+   6. for horizontal scalling:
+   *  kctl scale --replicas=15 rc/portfolio
+   
+   
+   7. (Yet to perform)Similarly I can perform rolling updates at runtime if update my portfolio
+   *  rolling-update --image=manilpuri9/portfolio:v2 manilpuri9/portfolio:v1
       
    
    
