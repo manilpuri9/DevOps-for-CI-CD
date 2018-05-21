@@ -1,12 +1,16 @@
 # CI/CD Automation Process 
 (Under Development)Includes Scripts for CI/CD using Jenkins, Docker and GitHub in AWS(Amazon Web Services) EC2 Cloud Infrastructure.
 
-First I am running the whole webapp manually in docker containers, perform some scaling operations using Kubernetes. 
-After that I will Automate the whole process and make a CI/CD environment for my webapp(WorkHub) using Jenkins-pipeline with Docker, Kubernetes and Git.
+My following project demonstrate:
+
+### * Project 1  Binding Environment and Code together which can run indipendently in any system.
+### * Project 2  Running the containers in cluster for Highavailability, Horizontal Scalling & Rolling Updates.
+### * Project 3  Building a CI/CD environment with automation where developer can move their code in production with a push.
 
 ## 1. Manual steps for running WorkHub in Docker Containers 
+First I am running the my WorkHub Webapp manually in docker containers, Push it in my DockerHub Repo and after that i will run it in AWS EC2 instance pulling from dockerhub, which besically shows the scenarios of shiping whole environment with code.
 
-The workhub web-app from my repo is converted inot docker image and it is uploaded in DockerHub.
+The workhub web-app from my repo is converted into docker image and it is uploaded in DockerHub.
 The link to DockerHub repository is:
   * https://hub.docker.com/r/manilpuri9/workhub/ 
 
@@ -54,10 +58,10 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
 8. Start it again but this time we link it to the running database container that we ran in step 5
    * docker run --link sql:mysql -it -p 80:5000 -v /home/manil/Documents/git/WorkHub:/root/ manilpuri9/workhub:v1
 
-###### At this point you must have a running webapp Workhub in your machine at port 80. Go to the browser and type localhost
+##### At this point you must have a running webapp Workhub in your machine at port 80. Go to the browser and type localhost
 
 ## 2. Running my portfolio site in Docker Swarm & Kubernetes Cluster
-###   1 Docker Swarm
+###   a) Docker Swarm
    Now for :
    * High Availability,
    * Horizontal Scaling,
@@ -99,7 +103,7 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
    5. Rolling Updates:
    *  docker service update --image manilpuri9/portfolio:v1 service1
    
-### 2 Kubernetes Cluster
+### b) Kubernetes Cluster
 Kubernetes can perform everything that docker swarm performs but it outsmarts docker swarm:
 * Kubernetes doesnot imediately kills the pods while rolling updates, First it checks if the newly created pod 
 is stable or not, and check for loadbalencing and after that it removes the pod. 
@@ -128,6 +132,7 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    7. (Yet to perform)Similarly I can perform rolling updates at runtime if update my portfolio
    *  rolling-update --image=manilpuri9/portfolio:v2 manilpuri9/portfolio:v1
       
+ ##  3 Intigration and Automation using Jenkins and Github
    
    
 
