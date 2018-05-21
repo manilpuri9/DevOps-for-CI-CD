@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: portfolio
 spec:
-  replicas: 1
+  replicas: 4
   template:
     metadata:
       labels:
