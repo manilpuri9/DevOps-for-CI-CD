@@ -62,6 +62,34 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
    * Rolling updates
    We use docker swarm / container cluster.
    
+   1. For this I am building a docker swarm with my portfolio site image. 
+      I am running 2 EC2 Instances in AWS, Installing Docker in both of them, and pulling portfolio image in both of them.(say Instance 1 & Instance 2)
+      
+      *docker pull manilpuri9/portfolio     (on both instances)
+      
+   2. Making one instance as master and another as slave. Running following command in instance 1(master).
+   
+   *hostname -I (getting the private IP of master)
+   
+   *docker swarm init --advertise-addr 172.31.86.17
+   
+   This command generates a token as:
+   
+    docker swarm join --token SWMTKN-1-2599d37taxeucuxqq0tbraz11h2e29h8upc1znl7ash4r8wzvg-0okv1lyptyeqcknmejrvthe0j              172.31.86.17:2377
+   
+   3. Before running the docker swarm join command in slave, I opened the port 2377 on my Instance 1(master).and ran the           command on the Instance 2(slave):
+   
+      *docker swarm join --token SWMTKN-1-2599d37taxeucuxqq0tbraz11h2e29h8upc1znl7ash4r8wzvg-0okv1lyptyeqcknmejrvthe0j               172.31.86.17:2377
+      
+      The output I got is:
+      *nmejrvthe0j 172.31.86.17:
+      This node joined a swarm as a worker.
+   
+   4. 
+
+      
+      
+   
    
 
 
