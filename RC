@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: manilpuri9/portfolio:v1
+  name: portfolio
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: manilpuri9/portfolio:v1
+        app: portfolio
     spec:
       containers:
-      - name: manilpuri9/portfolio:v1
+      - name: portfolio
         image: manilpuri9/portfolio:v1
         ports:
         - containerPort: 80
