@@ -99,8 +99,26 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
    5. Rolling Updates:
    *  docker service update --image manilpuri9/portfolio:v1 service1
    
+### 2 Kubernetes Cluster
+Kubernetes can perform everything that docker swarm performs but it outsmarts docker swarm:
+* Kubernetes doesnot imediately kills the pods while rolling updates, First it checks if the newly created pod 
+is stable or not, and check for loadbalencing and after that it removes the pod. 
+
+Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    
-      
+   1. Pulling image from my DockerHub Repo:
+   * docker pull manilpuri9/portfolio:v1
+   
+   2. Create namespace in kubernetes using "namespace.yml" file:
+   * kubectl create -f namespace.yml
+   
+   3. Create pods where there will be containers of portfolio site using "pod" file:
+   *  kubectl -n NSmanil create -f pod
+   
+   4. Create an alias for ease of typing "kubectl -n manil" all the time 
+   *  alias kctl="kubectl -n NSmanil"
+   
+   5. Create ReplicaController so that our service 
       
    
    
