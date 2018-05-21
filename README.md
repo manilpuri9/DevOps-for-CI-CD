@@ -89,6 +89,17 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
    4. Creating a service:
     * docker service create --name service1 --publish published=80,target=80 --replicas 5 manilpuri9/portfolio
 
+   5. Scaling my service  
+   
+   I. scaling up:
+   * docker service scale service1=10
+   II. scaling down:
+   * docker service scale service1=3
+   
+   5. Rolling Updates:
+   *  docker service update --image manilpuri9/portfolio:v1 service1
+   
+   
       
       
    
