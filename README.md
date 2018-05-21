@@ -20,11 +20,11 @@ The link to DockerHub repository is:
 2. Run the downloaded image as:
    * docker run -it -p 80:5000 workhub:v1
    
-   I. Go inside the container
-      * docker exec -it <containerID> bash
+  I. Go inside the container
+   * docker exec -it <containerID> bash
    
-   II. Run the app.py file inside Workhub folder
-      * python app.py
+ II. Run the app.py file inside Workhub folder
+   * python app.py
 
 Upto here the server is running without the database. Just to check if our server is serving properly.
 Go to your browser and type localhost. You must be able to see the homepage of WorkHub.
