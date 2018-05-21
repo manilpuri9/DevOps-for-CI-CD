@@ -3,11 +3,11 @@
 
 My following project demonstrate:
 
- * Project 1  Binding Environment and Code together which can run indipendently in any system.
- * Project 2  Running the containers in cluster for Highavailability, Horizontal Scalling & Rolling Updates.
- * Project 3  Building a CI/CD environment with automation where developer can move their code in production with a push.
+ * Project 1  Binding Docker Container(Environment and Code together) which can run indipendently in any system.
+ * Project 2  Running the containers in cluster(Docker swarm & Kubernetes Cluster) for Highavailability, Horizontal Scalling & Rolling Updates.
+ * Project 3  Building a CI/CD environment with (Jenkins & Git) push trigger where developers can deploy their code in production with a push.
 
-## 1. Manual steps for running WorkHub in Docker Containers 
+## Project 1  Manual steps for running WorkHub in Docker Containers 
 First I am running the my WorkHub Webapp manually in docker containers, Push it in my DockerHub Repo and after that i will run it in AWS EC2 instance pulling from dockerhub, which besically shows the scenarios of shiping whole environment with code.
 
 The workhub web-app from my repo is converted into docker image and it is uploaded in DockerHub.
