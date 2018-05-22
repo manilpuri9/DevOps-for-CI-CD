@@ -6,6 +6,7 @@ My following project demonstrate:
  * Project 1  Binding Docker Container(Environment and Code together) which can run indipendently in any system.
  * Project 2  Running the containers in cluster(Docker swarm & Kubernetes Cluster) for Highavailability, Horizontal Scalling & Rolling Updates.
  * Project 3  Building a CI/CD environment with (Jenkins & Git) push trigger where developers can deploy their code in production with a push.
+ * Project 4  System configration and Deployment using Ansible
 
 ## Project 1  Manual steps for running WorkHub in Docker Containers 
 First I am running the my WorkHub Webapp manually in docker containers, Push it in my DockerHub Repo and after that i will run it in AWS EC2 instance pulling from dockerhub, which besically shows the scenarios of shiping whole environment with code.
@@ -210,4 +211,15 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
         docker run -d -p 80:80 -v manilpuri9.github.io/:/var/www/html portfolio:latest
         
    13. Now whenever new commit is done, new image is made in the slave machine and it is hosted in the container at port 80.
+   
+## System configration and Deployment using Ansible
+   Ansible is a configuration management and provisioning tool, similar to Chef, Puppet or Salt.
+   I am using it for again hosting my portfolio site in AWS EC2 instance.
+   
+   1.
+   2.
+   3.
+   4.
+   5.
+   
    
