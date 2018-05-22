@@ -216,9 +216,24 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    Ansible is a configuration management tool similar to Chef, Puppet or Salt.
    I am using it for again hosting my portfolio site in AWS EC2 instance.
    
-   1.
-   2.
-   3.
+   1. I am installing ansible in my machine(OS: Ubuntu 16.04 LTS)
+   
+    apt-get install ansible
+        
+   2. Creating RSA key pair 
+      
+    ssh-keygen -t rsa
+   
+   3. While running this command rsa key pair is made in the folder /root/.ssh/
+     
+     cd /root/.ssh/
+     ls
+     
+   Gives:
+    
+    id_rsa  id_rsa.pub  known_hosts
+
+  I copy the id_rsa.pub in the servers .ssh file 
    4.
    5.
    
