@@ -213,7 +213,7 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    13. Now whenever new commit is done, new image is made in the slave machine and it is hosted in the container at port 80.
    
 ## System configration and Deployment using Ansible
-   Ansible is a configuration management and provisioning tool, similar to Chef, Puppet or Salt.
+   Ansible is a configuration management tool similar to Chef, Puppet or Salt.
    I am using it for again hosting my portfolio site in AWS EC2 instance.
    
    1.
