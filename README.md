@@ -207,6 +207,7 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
         yum install docker 
         service docker start
         docker build -t portfolio:latest .
-        docker run -d -p 80:80 portfolio:latest
+        docker run -d -p 80:80 -v manilpuri9.github.io/:/var/www/html portfolio:latest
         
-        
+   13. Now whenever new commit is done, new image is made in the slave machine and it is hosted in the container at port 80.
+   
