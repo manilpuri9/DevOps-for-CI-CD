@@ -1,0 +1,19 @@
+
+cd /opt
+sudo wget --no-cookies --no-check-certificate --header "Cookie: %3A%2F%2Fwww.oracle.com%2F; -securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.tar.gz
+sudo tar xzf jdk-8u151-linux-x64.tar.gz
+cd jdk1.8.0_151/
+sudo alternatives --install /usr/bin/java java /opt/jdk1.8.0_151/bin/java 2
+sudo alternatives --config java
+
+(If you are getting some other options as well, choose the one with "/opt/jdk1.8.0_151/bin/java")
+
+Now let's set alternatives, so that once Java is called, it points to the correct JDK version through following commands:
+
+sudo alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_151/bin/jar 2
+sudoalternatives --set jar /opt/jdk1.8.0_151/bin/jar
+sudo alternatives --set javac /opt/jdk1.8.0_151/bin/javac
+
+check java version:
+
+java -version
