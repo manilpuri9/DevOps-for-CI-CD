@@ -12,51 +12,65 @@ First I am running the my WorkHub Webapp manually in docker containers, Push it 
 
 The workhub web-app from my repo is converted into docker image and it is uploaded in DockerHub.
 The link to DockerHub repository is:
-  * https://hub.docker.com/r/manilpuri9/workhub/ 
+        
+        https://hub.docker.com/r/manilpuri9/workhub/ 
 
 1. Run pull command in your server: 
-   * docker pull manilpuri9/workhub      
+  
+        docker pull manilpuri9/workhub      
 
 2. Run the downloaded image as:
-   * docker run -it -p 80:5000 workhub:v1
+   
+        docker run -it -p 80:5000 workhub:v1
    
   I. Go inside the container
-   * docker exec -it <containerID> bash
+   
+    docker exec -it <containerID> bash
    
  II. Run the app.py file inside Workhub folder
-   * python app.py
+   
+    python app.py
 
 Upto here the server is running without the database. Just to check if our server is serving properly.
 Go to your browser and type localhost. You must be able to see the homepage of WorkHub.
 
 And here is the image of database:
-   * https://hub.docker.com/r/manilpuri9/database/
+   
+    https://hub.docker.com/r/manilpuri9/database/
    
 3. Run pull command in your server:
-   * docker pull manilpuri9/database
+   
+        docker pull manilpuri9/database
 
 If you pull mysql:v2.1 all the configration are done previously so you can skip to step 7
-   * docker pull manilpuri9/mysql:v2.1  
+   
+    docker pull manilpuri9/mysql:v2.1  
 
 
 4. Run the downloaded image as:
-   * docker run --name sql -e MYSQL_ROOT_PASSWORD=my-secret-pw -v <path of your mysqldumpfile.sql>:/root/ -it mysql
+   
+        docker run --name sql -e MYSQL_ROOT_PASSWORD=my-secret-pw -v <path of your mysqldumpfile.sql>:/root/ -it mysql
    
  In my case:
-   * docker run --name sql -e MYSQL_ROOT_PASSWORD=my-secret-pw -v /home/manil/Documents/git/WorkHub/:/root/ -it mysql
+   
+        docker run --name sql -e MYSQL_ROOT_PASSWORD=my-secret-pw -v /home/manil/Documents/git/WorkHub/:/root/ -it mysql
    
 5. Go inside the container
-   * docker exec -it <containerID> bash
+   
+        docker exec -it <containerID> bash
    
 6. Create a database using mysql as:
-   * mysql -u root -p myflaskapp < workhubdatadump.sql
+   
+        mysql -u root -p myflaskapp < workhubdatadump.sql
 
 7. Stop and remove the running docker container that we created on step 1
-   * docker stop <containerID>
-   * docker rm <containerID>
+   
+         docker stop <containerID>
+         docker rm <containerID>
 
 8. Start it again but this time we link it to the running database container that we ran in step 5
-   * docker run --link sql:mysql -it -p 80:5000 -v /home/manil/Documents/git/WorkHub:/root/ manilpuri9/workhub:v1
+   
+        docker run --link sql:mysql -it -p 80:5000 -v /home/manil/Documents/git/WorkHub:/root/ manilpuri9/workhub:v1
 
 ##### At this point you must have a running webapp Workhub in your machine at port 80. Go to the browser and type localhost
 
@@ -72,11 +86,13 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
    
    1. For this I am building a docker swarm with my portfolio site image. 
       I am running 2 EC2 Instances in AWS, Installing Docker in both of them, and pulling portfolio image in both of them (say Instance 1 & Instance 2)
-      * docker pull manilpuri9/portfolio     (on both instances)
+      
+            docker pull manilpuri9/portfolio     (on both instances)
       
    2. Making one instance as master and another as slave. Running following command in instance 1(master).
-      * hostname -I (getting the private IP of master)
-      * docker swarm init --advertise-addr 172.31.86.17
+      
+            hostname -I (getting the private IP of master)
+            docker swarm init --advertise-addr 172.31.86.17
    
    This command generates a token as:
    
@@ -91,17 +107,21 @@ If you pull mysql:v2.1 all the configration are done previously so you can skip 
    * This node joined a swarm as a worker.
    
    4. Creating a service:
-    * docker service create --name service1 --publish published=80,target=80 --replicas 5 manilpuri9/portfolio
+   
+    docker service create --name service1 --publish published=80,target=80 --replicas 5 manilpuri9/portfolio
 
    5. Scaling my service  
    
    I. scaling up:
-   * docker service scale service1=10
+   
+    docker service scale service1=10
    II. scaling down:
-   * docker service scale service1=3
+   
+    docker service scale service1=3
    
    5. Rolling Updates:
-   *  docker service update --image manilpuri9/portfolio:v1 service1
+   
+    docker service update --image manilpuri9/portfolio:v1 service1
    
 ### b) Kubernetes Cluster
 Kubernetes can perform everything that docker swarm performs but it outsmarts docker swarm:
@@ -111,29 +131,82 @@ is stable or not, and check for loadbalencing and after that it removes the pod.
 Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    
    1. Pulling image from my DockerHub Repo:
-   * docker pull manilpuri9/portfolio:v1
+   
+    docker pull manilpuri9/portfolio:v1
    
    2. Create namespace in kubernetes using "namespace.yml" file:
-   * kubectl create -f namespace.yml
+   
+    kubectl create -f namespace.yml
    
    3. Create pods where there will be containers of portfolio site using "pod" file:
-   *  kubectl -n NSmanil create -f pod
+   
+    kubectl -n NSmanil create -f pod
    
    4. Create an alias for ease of typing "kubectl -n manil" all the time 
-   *  alias kctl="kubectl -n NSmanil"
+   
+    alias kctl="kubectl -n NSmanil"
    
    5. Create ReplicaController so that we can hirizontally scale at runtime and perform rolling updates:
-   *  kctl expose --type=NodePort --port=80 rc/portfolio
+   
+    kctl expose --type=NodePort --port=80 rc/portfolio
    
    6. for horizontal scalling:
-   *  kctl scale --replicas=15 rc/portfolio
+   
+    kctl scale --replicas=15 rc/portfolio
    
    
    7. (Yet to perform)Similarly I can perform rolling updates at runtime if update my portfolio
-   *  rolling-update --image=manilpuri9/portfolio:v2 manilpuri9/portfolio:v1
+   
+    rolling-update --image=manilpuri9/portfolio:v2 manilpuri9/portfolio:v1
       
  ##  3 Intigration and Automation using Jenkins and Github
    
+   1. Create an instance in AWS.
    
-
-
+   2. Install Docker in it.
+   
+    yum install docker
+    service docker start
+   
+   3. Pull jenkins image from dockerhub.
+   
+    docker pull jenkins
+   
+   4. Run Jinkins image.
+   
+    docker run -d -p 8080:8080 -p 50000:50000 jenkins
+   
+   5. Visit the public ip with port 8080, there is our jenkins running
+   
+    http://35.172.119.254:8080/
+   
+   6. follow the instruction to copy the password and make a user and login.
+   
+   7. install github plugins.
+  
+    https://wiki.jenkins.io/display/JENKINS/Plugins
+   
+   8. Create a simple job.
+   
+   9. Create a webhook from github repo
+  
+    https://www.youtube.com/watch?v=Z3S2gMBUkBo
+   
+   10. Test the github webhook.
+   
+   11. Add a jenkins slave to the job
+   
+    https://youtu.be/3AlR6bPcuvo
+   
+   12. Add a script in the job to download the github repo make a docker image and run it into slave.
+   
+   Script:
+   
+        git init
+        git clone https://github.com/manilpuri9/manilpuri9.github.io
+        yum install docker 
+        service docker start
+        docker build -t portfolio:latest .
+        docker run -d -p 80:80 portfolio:latest
+        
+        
