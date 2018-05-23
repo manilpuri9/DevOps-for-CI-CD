@@ -216,6 +216,7 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    Ansible is a configuration management tool similar to Chef, Puppet or Salt.
    I am using it for again hosting my portfolio site in AWS EC2 instance.
    
+   ### I. Configration of Machines
    1. I am installing ansible in my machine(OS: Ubuntu 16.04 LTS)
    
     apt-get install ansible
@@ -233,8 +234,19 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
     
     id_rsa  id_rsa.pub  known_hosts
 
-  I copy the id_rsa.pub in the servers .ssh file 
-   4.
-   5.
+   I copy the id_rsa.pub in the servers .ssh file 
+      
+     ssh-copy-id manil@34.239.119.91
+     
+   I already created user named manil in my aws instance. So i copied the RSA Public key-pair there in the directory /root/.ssh/authorized_key
+   
+   
+   5. Now when I login to the machine, i dont need any password, I am authonticated automatically through my RSA private-key.
+   
+    ssh manil@34.239.119.91
+ ### II. Using Ansible    
+ Now, Since i have already installed ansible and i also configred my remote machine to login through RSA key-pair, i         can include my remote machine in ansible inventory so that i can use it through ansible.
+   I am running simple playbook for deploying my portfolio site on the machines included in my inventory
+   
    
    
