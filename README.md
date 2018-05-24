@@ -246,7 +246,10 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
     ssh manil@34.239.119.91
  ### II. Using Ansible    
  Now, Since i have already installed ansible and i also configred my remote machine to login through RSA key-pair, i         can include my remote machine in ansible inventory so that i can use it through ansible.
-   I am running simple playbook for deploying my portfolio site on the machines included in my inventory
+   I am running simple playbook for deploying my portfolio site on the machines included in my inventory.
+   
+### Playbook Script
+   
    
    
    
