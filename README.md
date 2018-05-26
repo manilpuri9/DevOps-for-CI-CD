@@ -250,6 +250,26 @@ Now I run my portfolio site in Kubernetes Cluster for getting all its benifits:
    
 ### Playbook Script
    
+     ---
+     - hosts: server
+     user: root
+     tasks:
+      - name: installing httpd
+        yum: 
+         name: httpd 
+         state: installed
+
+      - name: copying file from this machine to remote machine
+        copy: src=/home/manil/Documents/git/manilpuri9.github.io/index.html dest=/var/www/html/index.html
+
+      - name: starting server
+        service:
+         name: httpd
+         state: restarted
    
    
-   
+Command to run ansible playbook:
+        
+        ansible-playbook test-playbook.yml
+        
+With this all the configration written in the playbook is ran on the systems mentioned in the inventory.
