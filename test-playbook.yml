@@ -1,0 +1,16 @@
+---
+ - hosts: server
+   user: root
+   tasks:
+    - name: installing httpd
+      yum: 
+       name: httpd 
+       state: installed
+
+    - name: copying file from this machine to remote machine
+      copy: src=/home/manil/Documents/git/manilpuri9.github.io/index.html dest=/var/www/html/index.html
+
+    - name: starting server
+      service:
+       name: httpd
+       state: restarted
